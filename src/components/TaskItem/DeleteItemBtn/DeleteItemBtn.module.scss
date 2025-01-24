@@ -1,0 +1,14 @@
+@use '/src/styles/variables.scss' as vars;
+
+.btn {
+  background-color: transparent;
+  transition: transform 0.1s linear;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.icon {
+  fill: vars.$accent-color;
+}

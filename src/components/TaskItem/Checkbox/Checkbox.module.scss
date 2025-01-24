@@ -1,0 +1,70 @@
+@use 'sass:color';
+@use '/src/styles/variables.scss' as vars;
+
+.checkbox {
+  height: 20px;
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid vars.$secondary-text-color;
+  transition: background-color 0.25s ease;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: rgba(vars.$success-color, 0.2);
+  }
+
+  &.checked {
+    background-color: transparent;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 2px;
+    width: 3px;
+    height: 8px;
+    border: 1px solid vars.$success-color;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+}
+
+.body {
+  color: vars.$secondary-text-color;
+  line-height: 1.4;
+  font-size: 16px;
+  font-weight: bold;
+}

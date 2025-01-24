@@ -1,0 +1,61 @@
+@use 'sass:color';
+@use '/src/styles/mixins.scss' as mixins;
+@use '/src/styles/variables.scss' as vars;
+
+$formHeight: 4.5rem;
+
+.form {
+  @include mixins.flex-row-between-strech;
+  width: 100%;
+  height: $formHeight;
+  border: 1px solid vars.$accent-color;
+  overflow: hidden;
+  border-radius: vars.$border-radius;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: vars.$secondary-text-color;
+  background-color: vars.$secondary-bg-color;
+
+  &:focus {
+    background-color: color.adjust(vars.$secondary-bg-color, $lightness: -3%);
+    outline: none;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.btn {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 0 1.5rem;
+  border-left: 1px solid vars.$accent-color;
+  background-color: vars.$accent-color;
+  color: vars.$secondary-bg-color;
+  font-size: 2rem;
+  text-align: center;
+
+  &:disabled {
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn {
+    padding-right: 2rem;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .input {
+    &::placeholder {
+      color: transparent;
+    }
+  }
+}

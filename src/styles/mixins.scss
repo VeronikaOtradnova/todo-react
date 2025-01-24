@@ -1,0 +1,29 @@
+@use './variables.scss' as vars;
+
+@mixin flex-center($direction: row, $wrap: nowrap) {
+  display: flex;
+  flex-flow: $direction $wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-row-between-center($wrap: nowrap) {
+  display: flex;
+  flex-flow: row $wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column-start-strech($wrap: nowrap) {
+  display: flex;
+  flex-flow: column $wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+@mixin flex-row-between-strech($wrap: nowrap) {
+  display: flex;
+  flex-flow: row $wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}

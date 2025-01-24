@@ -1,0 +1,18 @@
+@use '/src/styles/variables.scss' as vars;
+@use '/src/styles/mixins.scss' as mixins;
+
+.header {
+  width: 100%;
+  background-color: vars.$secondary-bg-color;
+}
+
+.content {
+  @include mixins.flex-center;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: vars.$accent-color;
+}
