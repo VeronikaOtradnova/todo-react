@@ -2,12 +2,14 @@ import { FormEvent, useState } from 'react';
 import styles from './TaskForm.module.scss';
 import { ITask } from '../../types/task';
 import { useResize } from '../../hooks/useResize';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 interface IProps {
   createTask: (task:ITask) => void
 }
 
 export function TaskForm({createTask}: IProps) {
+  const tasks = useTypedSelector(state => state.tasks);
   const [inputValue, setInputValue] = useState<string>('');
   const {width} = useResize();
 
@@ -31,7 +33,11 @@ export function TaskForm({createTask}: IProps) {
         value={inputValue}
         onChange={e => setInputValue(e.target.value)}
         className={styles.input}
-        placeholder='Создайте новую задачу!'
+        placeholder={
+          tasks?.length > 0 ?
+          'Создайте новую задачу!' :
+          'Создайте первую задачу!'
+        }
       />
       <button
         className={styles.btn}

@@ -1,3 +1,17 @@
+@use '/src/styles/variables.scss' as vars;
+
 .list {
   margin-top: 2rem;
+}
+
+.emptyListMessageMobile {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .emptyListMessageMobile {
+    display: block;
+    text-align: center;
+    color: vars.$secondary-text-color;
+  }
 }

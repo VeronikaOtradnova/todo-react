@@ -2,6 +2,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { TaskItem } from '../TaskItem/TaskItem';
 import styles from './TasksList.module.scss';
 import { ITask } from '../../types/task';
+import { useResize } from '../../hooks/useResize';
 
 interface IProps {
   updateTask: (task:ITask) => void,
@@ -10,6 +11,7 @@ interface IProps {
 
 export function TaskList({updateTask, deleteTask}:IProps) {
   const tasks = useTypedSelector(state => state.tasks);
+  const {width} = useResize();
 
   const sortTasks = (tasks: ITask[]): ITask[] => {
     const uncompletedTasks = tasks.filter(task => !task.completed)
@@ -24,7 +26,7 @@ export function TaskList({updateTask, deleteTask}:IProps) {
   return (
     <ul className={styles.list}>
       {
-        tasks && tasks.length > 0 ?
+        tasks?.length > 0 &&
         sortTasks(tasks).map(task => 
           <TaskItem 
             task={task} 
@@ -32,8 +34,12 @@ export function TaskList({updateTask, deleteTask}:IProps) {
             updateTask={updateTask}
             deleteTask={deleteTask}
           />
-        ) :
-        <div>Список задач пуст. Создайте первую задачу!</div>
+        )
+      }
+
+      {
+        tasks?.length === 0 &&
+        <div className={styles.emptyListMessageMobile}>Список задач пуст. Создайте первую задачу!</div>
       }
     </ul>
   )
