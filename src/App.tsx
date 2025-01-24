@@ -8,10 +8,7 @@ import { TaskForm } from './components/TaskForm/TaskForm';
 function App() {
   const dispatch = useAppDispatch();
 
-  const createTask = (task: ITask) => {
-    console.log('task')
-    dispatch(createTaskAction(task))
-  }
+  const createTask = (task: ITask) => dispatch(createTaskAction(task));
   const updateTask = (task: ITask) => dispatch(updateTaskAction(task));
   const deleteTask = (id: ITask['id']) => dispatch(deleteTaskAction(id));
 
