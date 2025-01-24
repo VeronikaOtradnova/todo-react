@@ -2,7 +2,6 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { TaskItem } from '../TaskItem/TaskItem';
 import styles from './TasksList.module.scss';
 import { ITask } from '../../types/task';
-import { useResize } from '../../hooks/useResize';
 
 interface IProps {
   updateTask: (task:ITask) => void,
@@ -11,7 +10,6 @@ interface IProps {
 
 export function TaskList({updateTask, deleteTask}:IProps) {
   const tasks = useTypedSelector(state => state.tasks);
-  const {width} = useResize();
 
   const sortTasks = (tasks: ITask[]): ITask[] => {
     const uncompletedTasks = tasks.filter(task => !task.completed)
